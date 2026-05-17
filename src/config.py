@@ -14,8 +14,8 @@ class Config:
     MODEL_NAME: str = os.getenv("MODEL_NAME", "llama-3.1-8b-instant")
     EMBEDDING_MODEL: str = os.getenv("EMBEDDING_MODEL", "BAAI/bge-small-en-v1.5")
     CHROMA_PERSIST_DIR: str = os.getenv("CHROMA_PERSIST_DIR", "./chroma_db")
-    CHUNK_SIZE: int = int(os.getenv("CHUNK_SIZE", "2000"))
-    CHUNK_OVERLAP: int = int(os.getenv("CHUNK_OVERLAP", "200"))
+    CHUNK_SIZE: int = int(os.getenv("CHUNK_SIZE", "800"))
+    CHUNK_OVERLAP: int = int(os.getenv("CHUNK_OVERLAP", "100"))
     TEMPERATURE: float = float(os.getenv("TEMPERATURE", "0.6"))
 
     @classmethod

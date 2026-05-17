@@ -1,10 +1,12 @@
 """Intelligent Form Agent - Core QA and Summarization Pipeline.
 
-This module implements the main agent that can:
-1. Answer questions about a single form
-2. Generate summaries of individual forms
-3. Provide holistic insights across multiple forms
-4. Extract and explain structured fields
+Optimized for Groq free tier (6K TPM on llama-3.1-8b-instant).
+Each request is budgeted to stay under 6K tokens total:
+  - System prompt: ~50 tokens
+  - User question: ~50 tokens
+  - Context: ~5000 tokens (~3500 chars)
+  - Response: ~800 tokens (max_tokens cap)
+  Total: ~5900 tokens per request
 """
 
 from typing import Dict, List, Optional
@@ -18,6 +20,12 @@ from .extractors import FormExtractor, StructuredFieldExtractor
 from .vectorstore import FormVectorStore
 
 
+# Token budget for context portion only.
+# 6K TPM total - ~100 tokens (prompts) - 800 tokens (response) = ~5100 tokens for context
+# At ~1.3 tokens per word, ~4 chars per token: ~3500 chars is safe
+MAX_CONTEXT_CHARS = 3500
+
+
 class FormAgent:
     """Intelligent agent for form understanding, QA, and summarization."""
 
@@ -28,11 +36,12 @@ class FormAgent:
             temperature=Config.TEMPERATURE,
             api_key=Config.GROQ_API_KEY,
             base_url=Config.GROQ_BASE_URL,
+            max_tokens=800,
         )
         self._extractor = FormExtractor()
         self._field_extractor = StructuredFieldExtractor()
         self._vectorstore = FormVectorStore()
-        self._loaded_forms: Dict[str, dict] = {}  # filename -> extracted data
+        self._loaded_forms: Dict[str, dict] = {}
 
     @property
     def loaded_forms(self) -> List[str]:
@@ -40,28 +49,14 @@ class FormAgent:
         return list(self._loaded_forms.keys())
 
     def load_form(self, file_path: str) -> dict:
-        """Load and process a form file.
-
-        Extracts text, identifies fields, and indexes into vector store.
-
-        Args:
-            file_path: Path to the form file.
-
-        Returns:
-            Dict with extraction results and metadata.
-        """
-        # Extract text
+        """Load and process a form file."""
         result = self._extractor.extract(file_path)
         text = result["text"]
         metadata = result["metadata"]
 
-        # Extract structured fields
         fields = self._field_extractor.extract_fields(text)
-
-        # Store in vector store for retrieval
         num_chunks = self._vectorstore.add_document(text, metadata)
 
-        # Cache locally
         form_data = {
             "text": text,
             "metadata": metadata,
@@ -69,53 +64,47 @@ class FormAgent:
             "num_chunks": num_chunks,
         }
         self._loaded_forms[metadata["filename"]] = form_data
-
         return form_data
 
-    def ask(self, question: str, form_name: Optional[str] = None) -> str:
-        """Ask a question about loaded forms.
+    def _build_context(self, docs: List[Document], budget: int = MAX_CONTEXT_CHARS) -> str:
+        """Assemble context from docs within character budget.
 
-        Args:
-            question: The question to answer.
-            form_name: Optional specific form to query. If None, searches all.
-
-        Returns:
-            The agent's answer as a string.
+        Adds chunks one by one until budget is reached.
+        Never truncates mid-chunk.
         """
+        parts = []
+        total = 0
+        for doc in docs:
+            content = doc.page_content
+            if total + len(content) + 4 > budget:
+                break
+            parts.append(content)
+            total += len(content) + 4
+        return "\n\n".join(parts)
+
+    def ask(self, question: str, form_name: Optional[str] = None) -> str:
+        """Ask a question about loaded forms."""
         if not self._loaded_forms:
             return "No forms have been loaded. Please load a form first."
 
-        # Use retrieval to find relevant chunks
         filter_meta = None
         if form_name and form_name in self._loaded_forms:
             filter_meta = {"filename": form_name}
 
         relevant_docs = self._vectorstore.search(
-            query=question,
-            k=8,
-            filter_metadata=filter_meta,
+            query=question, k=4, filter_metadata=filter_meta
         )
 
         if not relevant_docs:
             return "Could not find relevant information in the loaded forms."
 
-        context = "\n\n".join(doc.page_content for doc in relevant_docs)[:6000]
+        context = self._build_context(relevant_docs)
 
         prompt = ChatPromptTemplate.from_messages([
-            ("system", (
-                "You are an intelligent form analysis agent. You help users understand "
-                "form documents by answering questions accurately based on the provided context. "
-                "If the answer is not found in the context, say so clearly. "
-                "Be precise and cite specific values from the forms when possible."
-            )),
-            ("human", (
-                "Context from form document(s):\n"
-                "---\n"
-                "{context}\n"
-                "---\n\n"
-                "Question: {question}\n\n"
-                "Provide a clear, accurate answer based on the form content above."
-            )),
+            ("system",
+             "Answer using ONLY the provided form data. Be precise, cite values. "
+             "If info is missing from context, say so."),
+            ("human", "{context}\n\nQ: {question}"),
         ])
 
         chain = prompt | self._llm
@@ -123,52 +112,36 @@ class FormAgent:
         return response.content
 
     def summarize(self, form_name: Optional[str] = None) -> str:
-        """Generate a summary of a form or all loaded forms.
-
-        Args:
-            form_name: Specific form to summarize. If None, summarizes all.
-
-        Returns:
-            Summary text.
-        """
+        """Generate a summary of a form or all loaded forms."""
         if form_name and form_name in self._loaded_forms:
             forms_to_summarize = {form_name: self._loaded_forms[form_name]}
         elif form_name:
-            return f"Form '{form_name}' not found. Loaded forms: {self.loaded_forms}"
+            return f"Form '{form_name}' not found. Loaded: {self.loaded_forms}"
         else:
             forms_to_summarize = self._loaded_forms
 
         if not forms_to_summarize:
-            return "No forms have been loaded. Please load a form first."
+            return "No forms loaded. Use 'load' first."
 
-        # Build context
+        # Use fields as compact representation + first part of text
+        budget_per_form = MAX_CONTEXT_CHARS // len(forms_to_summarize)
         context_parts = []
-        for name, data in forms_to_summarize.items():
-            fields_str = ""
-            if data["fields"]:
-                fields_str = "\n\nExtracted Fields:\n" + "\n".join(
-                    f"  - {k}: {v}" for k, v in list(data["fields"].items())[:20]
-                )
-            context_parts.append(f"[Form: {name}]\n{data['text'][:3000]}{fields_str}")
 
-        context = "\n\n===\n\n".join(context_parts)[:6000]
+        for name, data in forms_to_summarize.items():
+            # Fields are the most token-efficient representation
+            if data["fields"]:
+                fields_lines = [f"  {k}: {v}" for k, v in list(data["fields"].items())[:25]]
+                part = f"[{name}]\n" + "\n".join(fields_lines)
+            else:
+                part = f"[{name}]\n{data['text'][:budget_per_form]}"
+            context_parts.append(part[:budget_per_form])
+
+        context = "\n\n".join(context_parts)[:MAX_CONTEXT_CHARS]
 
         prompt = ChatPromptTemplate.from_messages([
-            ("system", (
-                "You are an intelligent form analysis agent. Generate a clear, concise summary "
-                "of the form document(s) provided. Highlight the most important information "
-                "including: form type/purpose, key fields and their values, dates, parties involved, "
-                "and any notable details. Structure the summary for easy reading."
-            )),
-            ("human", (
-                "Form content:\n"
-                "---\n"
-                "{context}\n"
-                "---\n\n"
-                "Generate a comprehensive yet concise summary of this form. "
-                "Highlight the most important details that someone would need to know "
-                "without reading the full form."
-            )),
+            ("system",
+             "Summarize the form data: type, key people, important values, dates."),
+            ("human", "{context}\n\nProvide a structured summary."),
         ])
 
         chain = prompt | self._llm
@@ -176,63 +149,33 @@ class FormAgent:
         return response.content
 
     def holistic_analysis(self, question: str) -> str:
-        """Provide holistic insights across all loaded forms.
-
-        This analyzes patterns, commonalities, and differences across
-        multiple forms to answer cross-document questions.
-
-        Args:
-            question: The analytical question spanning multiple forms.
-
-        Returns:
-            Holistic analysis response.
-        """
+        """Cross-form analysis using retrieval + field summaries."""
         if len(self._loaded_forms) < 2:
             return (
-                "Holistic analysis requires at least 2 loaded forms. "
-                f"Currently loaded: {len(self._loaded_forms)} form(s)."
+                f"Need at least 2 forms for holistic analysis. "
+                f"Currently loaded: {len(self._loaded_forms)}."
             )
 
-        # Gather context from all forms
-        context_parts = []
+        # Compact field overview of each form
+        field_parts = []
         for name, data in self._loaded_forms.items():
-            fields_str = ""
             if data["fields"]:
-                fields_str = "\nKey Fields: " + ", ".join(
-                    f"{k}={v}" for k, v in list(data["fields"].items())[:15]
-                )
-            context_parts.append(
-                f"[Form: {name}]{fields_str}\n{data['text'][:2000]}"
-            )
+                top = ", ".join(f"{k}={v}" for k, v in list(data["fields"].items())[:8])
+                field_parts.append(f"[{name}] {top}")
+        fields_overview = "\n".join(field_parts)
 
-        context = "\n\n===\n\n".join(context_parts)[:5000]
+        # Retrieval for question-specific detail
+        relevant_docs = self._vectorstore.search(query=question, k=3)
+        retrieved = self._build_context(
+            relevant_docs, MAX_CONTEXT_CHARS - len(fields_overview) - 50
+        )
 
-        # Also get relevant chunks via semantic search
-        relevant_docs = self._vectorstore.search(query=question, k=4)
-        if relevant_docs:
-            extra_context = "\n\n".join(
-                f"[Relevant excerpt from {doc.metadata.get('filename', 'unknown')}]\n{doc.page_content}"
-                for doc in relevant_docs
-            )
-            context += f"\n\n=== Additional Relevant Excerpts ===\n\n{extra_context[:2000]}"
+        context = f"{fields_overview}\n\n{retrieved}"
 
         prompt = ChatPromptTemplate.from_messages([
-            ("system", (
-                "You are an intelligent form analysis agent performing holistic analysis "
-                "across multiple form documents. Your job is to identify patterns, "
-                "commonalities, differences, and provide cross-document insights. "
-                "Compare and contrast information across forms. "
-                "Provide specific examples and data points from the forms to support your analysis."
-            )),
-            ("human", (
-                "Multiple form documents:\n"
-                "---\n"
-                "{context}\n"
-                "---\n\n"
-                "Holistic Analysis Question: {question}\n\n"
-                "Analyze across ALL the forms above and provide comprehensive insights. "
-                "Reference specific forms and values in your answer."
-            )),
+            ("system",
+             "Compare and contrast across forms. Cite specific values."),
+            ("human", "{context}\n\nQ: {question}"),
         ])
 
         chain = prompt | self._llm
@@ -240,46 +183,28 @@ class FormAgent:
         return response.content
 
     def explain_fields(self, form_name: str) -> str:
-        """Explain the extracted fields from a specific form.
-
-        Args:
-            form_name: The form to explain fields for.
-
-        Returns:
-            Explanation of form fields and their significance.
-        """
+        """Explain extracted fields from a form."""
         if form_name not in self._loaded_forms:
-            return f"Form '{form_name}' not found. Loaded forms: {self.loaded_forms}"
+            return f"Form '{form_name}' not found. Loaded: {self.loaded_forms}"
 
         data = self._loaded_forms[form_name]
         fields = data["fields"]
 
         if not fields:
-            return f"No structured fields were extracted from '{form_name}'."
+            return f"No structured fields extracted from '{form_name}'."
 
-        fields_str = "\n".join(f"  - {k}: {v}" for k, v in fields.items())
+        # Only send fields, no raw text — saves tokens
+        fields_str = "\n".join(
+            f"  {k}: {v}" for k, v in list(fields.items())[:30]
+        )[:MAX_CONTEXT_CHARS]
 
         prompt = ChatPromptTemplate.from_messages([
-            ("system", (
-                "You are an intelligent form analysis agent. Explain the extracted fields "
-                "from a form document. For each field, explain what it means, why it matters, "
-                "and any notable observations about the value."
-            )),
-            ("human", (
-                "Form: {form_name}\n\n"
-                "Extracted Fields:\n{fields}\n\n"
-                "Full form text (for context):\n{text}\n\n"
-                "Explain each field: what it represents, its significance, "
-                "and any observations about the values."
-            )),
+            ("system", "Briefly explain each form field and note anything significant."),
+            ("human", "Form: {form_name}\n\n{fields}\n\nExplain each field."),
         ])
 
         chain = prompt | self._llm
-        response = chain.invoke({
-            "form_name": form_name,
-            "fields": fields_str,
-            "text": data["text"][:3000],
-        })
+        response = chain.invoke({"form_name": form_name, "fields": fields_str})
         return response.content
 
     def reset(self):

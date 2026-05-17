@@ -82,30 +82,24 @@ class FormAgent:
         Returns:
             The agent's answer as a string.
         """
-        # Build context from relevant chunks
+        if not self._loaded_forms:
+            return "No forms have been loaded. Please load a form first."
+
+        # Use retrieval to find relevant chunks
         filter_meta = None
         if form_name and form_name in self._loaded_forms:
             filter_meta = {"filename": form_name}
 
         relevant_docs = self._vectorstore.search(
             query=question,
-            k=5,
+            k=8,
             filter_metadata=filter_meta,
         )
 
         if not relevant_docs:
-            # Fall back to loaded form text directly
-            if form_name and form_name in self._loaded_forms:
-                context = self._loaded_forms[form_name]["text"][:4000]
-            elif self._loaded_forms:
-                context = "\n\n---\n\n".join(
-                    f"[{name}]\n{data['text'][:2000]}"
-                    for name, data in self._loaded_forms.items()
-                )
-            else:
-                return "No forms have been loaded. Please load a form first."
-        else:
-            context = "\n\n".join(doc.page_content for doc in relevant_docs)[:4000]
+            return "Could not find relevant information in the loaded forms."
+
+        context = "\n\n".join(doc.page_content for doc in relevant_docs)[:6000]
 
         prompt = ChatPromptTemplate.from_messages([
             ("system", (

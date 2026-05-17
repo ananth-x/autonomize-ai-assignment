@@ -115,6 +115,8 @@ analysis = agent.holistic_analysis("Compare salaries across forms")
 
 ## Demonstration
 
+> 📸 **Screenshots of the application in action are attached in [`docs/screenshots.pdf`](docs/screenshots.pdf)** — includes QA, summarization, holistic analysis and field extraction features.
+
 ### Example 1: Single Form QA
 
 **Q:** "What is Sarah's desired salary and current salary?"

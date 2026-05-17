@@ -96,16 +96,16 @@ class FormAgent:
         if not relevant_docs:
             # Fall back to loaded form text directly
             if form_name and form_name in self._loaded_forms:
-                context = self._loaded_forms[form_name]["text"]
+                context = self._loaded_forms[form_name]["text"][:4000]
             elif self._loaded_forms:
                 context = "\n\n---\n\n".join(
-                    f"[{name}]\n{data['text']}"
+                    f"[{name}]\n{data['text'][:2000]}"
                     for name, data in self._loaded_forms.items()
                 )
             else:
                 return "No forms have been loaded. Please load a form first."
         else:
-            context = "\n\n".join(doc.page_content for doc in relevant_docs)
+            context = "\n\n".join(doc.page_content for doc in relevant_docs)[:4000]
 
         prompt = ChatPromptTemplate.from_messages([
             ("system", (
@@ -153,11 +153,11 @@ class FormAgent:
             fields_str = ""
             if data["fields"]:
                 fields_str = "\n\nExtracted Fields:\n" + "\n".join(
-                    f"  - {k}: {v}" for k, v in data["fields"].items()
+                    f"  - {k}: {v}" for k, v in list(data["fields"].items())[:20]
                 )
-            context_parts.append(f"[Form: {name}]\n{data['text']}{fields_str}")
+            context_parts.append(f"[Form: {name}]\n{data['text'][:3000]}{fields_str}")
 
-        context = "\n\n===\n\n".join(context_parts)
+        context = "\n\n===\n\n".join(context_parts)[:6000]
 
         prompt = ChatPromptTemplate.from_messages([
             ("system", (
@@ -211,16 +211,16 @@ class FormAgent:
                 f"[Form: {name}]{fields_str}\n{data['text'][:2000]}"
             )
 
-        context = "\n\n===\n\n".join(context_parts)
+        context = "\n\n===\n\n".join(context_parts)[:5000]
 
         # Also get relevant chunks via semantic search
-        relevant_docs = self._vectorstore.search(query=question, k=8)
+        relevant_docs = self._vectorstore.search(query=question, k=4)
         if relevant_docs:
             extra_context = "\n\n".join(
                 f"[Relevant excerpt from {doc.metadata.get('filename', 'unknown')}]\n{doc.page_content}"
                 for doc in relevant_docs
             )
-            context += f"\n\n=== Additional Relevant Excerpts ===\n\n{extra_context}"
+            context += f"\n\n=== Additional Relevant Excerpts ===\n\n{extra_context[:2000]}"
 
         prompt = ChatPromptTemplate.from_messages([
             ("system", (

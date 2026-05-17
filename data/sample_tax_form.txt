@@ -1,57 +1,277 @@
-FORM 1040 - U.S. Individual Income Tax Return (Sample)
+FORM 1040 - U.S. Individual Income Tax Return - BATCH FILING
+Department of the Treasury - Internal Revenue Service
 Tax Year: 2023
+Batch Processing Date: 03/28/2024
+Total Returns in Batch: 3
+Filing Method: E-File
 
-=== PERSONAL INFORMATION ===
+================================================================================
+RETURN 1 OF 3
+================================================================================
+
+FORM 1040 - U.S. Individual Income Tax Return
+Tax Year: 2023
+Due Date: April 15, 2024
+Confirmation Number: EF-2024-9876543
+
+=== TAXPAYER INFORMATION ===
 First Name: John
 Middle Initial: A
 Last Name: Smith
 Social Security Number: XXX-XX-1234
 Date of Birth: 03/15/1985
-Filing Status: Married Filing Jointly
+Occupation: Marketing Director
+Phone: (555) 876-5432
+Email: john.a.smith@email.com
 
 Spouse First Name: Jane
+Spouse Middle Initial: M
 Spouse Last Name: Smith
 Spouse SSN: XXX-XX-5678
+Spouse Date of Birth: 09/22/1987
+Spouse Occupation: Registered Nurse
 
-Home Address: 123 Oak Street
+Filing Status: Married Filing Jointly
+
+=== HOME ADDRESS ===
+Street Address: 123 Oak Street
 City: Springfield
-State: IL
+State: Illinois
 ZIP Code: 62701
 
+=== DEPENDENTS ===
+Dependent 1: Emily Rose Smith (DOB: 05/10/2016, Age: 7)
+Dependent 2: Michael James Smith (DOB: 11/28/2019, Age: 4)
+Total Dependents: 2
+
 === INCOME ===
-Wages, salaries, tips (W-2): $85,000.00
-Interest income: $1,250.00
-Dividend income: $3,400.00
-Business income (Schedule C): $12,000.00
-Capital gains: $5,200.00
-Total Income: $106,850.00
+W-2 Wages (Employer 1 - John): $82,000.00
+W-2 Wages (Employer 2 - Jane): $68,000.00
+Interest Income: $1,250.00
+Dividend Income: $3,400.00
+Business Income (Schedule C): $12,000.00
+Capital Gains: $5,200.00
+Other Income: $350.00
+TOTAL GROSS INCOME: $172,200.00
 
-=== ADJUSTMENTS ===
-IRA deduction: $6,500.00
-Student loan interest: $2,500.00
-Health savings account: $3,850.00
-Total Adjustments: $12,850.00
+=== ADJUSTMENTS TO INCOME ===
+Traditional IRA Deduction: $6,500.00
+Student Loan Interest Deduction: $2,500.00
+HSA Deduction: $3,850.00
+Self-Employment Tax Deduction: $848.00
+Educator Expenses: $300.00
+Total Adjustments: $14,000.00
 
-Adjusted Gross Income (AGI): $94,000.00
+ADJUSTED GROSS INCOME (AGI): $158,200.00
 
 === DEDUCTIONS ===
 Standard Deduction: $27,700.00
-[x] Standard deduction selected
-[ ] Itemized deductions selected
+Qualified Business Income (QBI) Deduction: $2,400.00
+Total Deductions: $30,100.00
 
-Taxable Income: $66,300.00
+TAXABLE INCOME: $128,100.00
 
 === TAX COMPUTATION ===
-Tax: $7,456.00
-Child tax credit: $4,000.00 (2 qualifying children)
-Education credits: $2,000.00
-Total Credits: $6,000.00
+Total Tax Before Credits: $20,493.00
 
-Tax After Credits: $1,456.00
-Federal Income Tax Withheld: $9,500.00
+=== TAX CREDITS ===
+Child Tax Credit: $4,000.00 (2 children)
+Child and Dependent Care Credit: $1,200.00
+Lifetime Learning Credit: $2,000.00
+Residential Energy Credit: $800.00
+Total Credits: $8,000.00
 
-REFUND AMOUNT: $8,044.00
+TAX AFTER CREDITS: $12,493.00
 
-Signature: John A. Smith
-Date Signed: 04/10/2024
-Preparer: Self-prepared
+=== PAYMENTS & WITHHOLDING ===
+Federal Income Tax Withheld (W-2): $14,000.00
+Estimated Tax Payments: $4,000.00
+Total Payments: $18,000.00
+
+REFUND AMOUNT: $5,507.00
+Direct Deposit: Bank of Springfield, Checking Account
+
+Taxpayer Signature: John A. Smith
+Spouse Signature: Jane M. Smith
+Date Signed: 03/28/2024
+Preparer: Robert Thompson, CPA
+Preparer Firm: Thompson & Associates Tax Services
+
+================================================================================
+RETURN 2 OF 3
+================================================================================
+
+FORM 1040 - U.S. Individual Income Tax Return
+Tax Year: 2023
+Confirmation Number: EF-2024-9876544
+
+=== TAXPAYER INFORMATION ===
+First Name: Patricia
+Middle Initial: R
+Last Name: Anderson
+Social Security Number: XXX-XX-2345
+Date of Birth: 06/20/1980
+Occupation: Software Consultant
+Phone: (555) 234-5678
+Email: p.anderson@email.com
+
+Filing Status: Single
+
+=== HOME ADDRESS ===
+Street Address: 456 Tech Avenue, Apt 301
+City: Austin
+State: Texas
+ZIP Code: 78704
+
+=== DEPENDENTS ===
+No dependents claimed
+
+=== INCOME ===
+W-2 Wages (Primary Employer): $95,000.00
+W-2 Wages (Contract Work): $35,000.00
+Interest Income: $2,100.00
+Dividend Income: $5,800.00
+Business Income (Schedule C - Consulting): $45,000.00
+Capital Gains (Long-term): $8,500.00
+Rental Income (Schedule E): $18,000.00
+Rental Expenses: ($12,000.00)
+Net Rental Income: $6,000.00
+Other Income: $500.00
+TOTAL GROSS INCOME: $197,900.00
+
+=== ADJUSTMENTS TO INCOME ===
+Traditional IRA Deduction: $6,500.00
+Student Loan Interest Deduction: $2,500.00
+HSA Deduction: $3,850.00
+Self-Employment Tax Deduction: $3,182.00
+Total Adjustments: $16,032.00
+
+ADJUSTED GROSS INCOME (AGI): $181,868.00
+
+=== DEDUCTIONS ===
+Standard Deduction: $13,850.00 (Single)
+Qualified Business Income (QBI) Deduction: $9,000.00
+Total Deductions: $22,850.00
+
+TAXABLE INCOME: $159,018.00
+
+=== TAX COMPUTATION ===
+Total Tax Before Credits: $32,847.00
+
+=== TAX CREDITS ===
+Lifetime Learning Credit: $2,000.00
+Residential Energy Credit: $500.00
+Total Credits: $2,500.00
+
+TAX AFTER CREDITS: $30,347.00
+
+=== PAYMENTS & WITHHOLDING ===
+Federal Income Tax Withheld (W-2): $18,500.00
+Estimated Tax Payments: $12,000.00
+Total Payments: $30,500.00
+
+REFUND AMOUNT: $153.00
+Direct Deposit: Austin National Bank, Savings Account
+
+Taxpayer Signature: Patricia R. Anderson
+Date Signed: 03/27/2024
+Preparer: Robert Thompson, CPA
+
+================================================================================
+RETURN 3 OF 3
+================================================================================
+
+FORM 1040 - U.S. Individual Income Tax Return
+Tax Year: 2023
+Confirmation Number: EF-2024-9876545
+
+=== TAXPAYER INFORMATION ===
+First Name: Michael
+Middle Initial: J
+Last Name: Thompson
+Social Security Number: XXX-XX-3456
+Date of Birth: 11/12/1975
+Occupation: Business Owner
+Phone: (555) 567-8901
+Email: m.thompson@email.com
+
+Spouse First Name: Elizabeth
+Spouse Middle Initial: K
+Spouse Last Name: Thompson
+Spouse SSN: XXX-XX-7890
+Spouse Date of Birth: 02/28/1978
+Spouse Occupation: Accountant
+
+Filing Status: Married Filing Jointly
+
+=== HOME ADDRESS ===
+Street Address: 789 Executive Plaza, Suite 500
+City: Denver
+State: Colorado
+ZIP Code: 80202
+
+=== DEPENDENTS ===
+Dependent 1: Christopher Michael Thompson (DOB: 08/15/2010, Age: 13)
+Dependent 2: Victoria Anne Thompson (DOB: 03/22/2013, Age: 10)
+Dependent 3: Samuel James Thompson (DOB: 07/09/2016, Age: 7)
+Total Dependents: 3
+
+=== INCOME ===
+W-2 Wages (Michael - Business): $120,000.00
+W-2 Wages (Elizabeth - Accounting Firm): $85,000.00
+Business Income (Schedule C - Consulting Firm): $250,000.00
+Business Expenses: ($180,000.00)
+Net Business Income: $70,000.00
+Interest Income: $4,200.00
+Dividend Income: $12,500.00
+Capital Gains (Long-term): $35,000.00
+Rental Income (Schedule E - 2 Properties): $48,000.00
+Rental Expenses: ($28,000.00)
+Net Rental Income: $20,000.00
+Other Income: $1,200.00
+TOTAL GROSS INCOME: $348,900.00
+
+=== ADJUSTMENTS TO INCOME ===
+Traditional IRA Deduction: $13,000.00 (both spouses)
+Student Loan Interest Deduction: $2,500.00
+HSA Deduction: $7,750.00 (family plan)
+Self-Employment Tax Deduction: $4,950.00
+Total Adjustments: $28,200.00
+
+ADJUSTED GROSS INCOME (AGI): $320,700.00
+
+=== DEDUCTIONS ===
+Standard Deduction: $27,700.00 (Married Filing Jointly)
+Qualified Business Income (QBI) Deduction: $14,000.00
+Total Deductions: $41,700.00
+
+TAXABLE INCOME: $279,000.00
+
+=== TAX COMPUTATION ===
+Total Tax Before Credits: $58,234.00
+
+=== TAX CREDITS ===
+Child Tax Credit: $6,000.00 (3 children)
+Child and Dependent Care Credit: $3,000.00
+Lifetime Learning Credit: $2,000.00
+Residential Energy Credit: $2,000.00
+Total Credits: $13,000.00
+
+TAX AFTER CREDITS: $45,234.00
+
+=== PAYMENTS & WITHHOLDING ===
+Federal Income Tax Withheld (W-2): $28,000.00
+Estimated Tax Payments: $20,000.00
+Total Payments: $48,000.00
+
+REFUND AMOUNT: $2,766.00
+Direct Deposit: Denver First Bank, Checking Account
+
+Taxpayer Signature: Michael J. Thompson
+Spouse Signature: Elizabeth K. Thompson
+Date Signed: 03/28/2024
+Preparer: Robert Thompson, CPA
+
+================================================================================
+END OF BATCH - 3 TAX RETURNS TOTAL
+================================================================================

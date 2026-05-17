@@ -1,80 +1,352 @@
-PATIENT INTAKE FORM
-Clinic: Riverside Family Medicine
-Date: 02/20/2024
+PATIENT INTAKE AND MEDICAL HISTORY FORM - BATCH PROCESSING
+Facility: Riverside Family Medicine & Wellness Center
+Facility Address: 1200 Health Parkway, Suite 300, Denver, CO 80201
+Facility Phone: (555) 100-2000
+Batch Date: 02/20/2024
+Total Patients: 3
+Provider: Dr. Amanda Foster, MD, FAAFP
 
-=== PATIENT INFORMATION ===
-Patient Name: Robert Williams
+================================================================================
+PATIENT 1 OF 3
+================================================================================
+
+PATIENT INTAKE AND MEDICAL HISTORY FORM
+Date of Visit: 02/20/2024
+Visit Type: New Patient - Comprehensive Evaluation
+Appointment Time: 10:30 AM
+
+=== PATIENT DEMOGRAPHICS ===
+Patient Name: Robert James Williams
+Preferred Name: Rob
 Date of Birth: 11/08/1978
 Age: 45
 Gender: Male
 Marital Status: Married
-Occupation: Accountant
+Race: Caucasian
+Ethnicity: Non-Hispanic
+Primary Language: English
 
-Contact Phone: (555) 234-5678
+Social Security Number: XXX-XX-7890
+Driver's License: CO-XXXXXXX890
+Employer: Williams & Associates Accounting Firm
+Occupation: Certified Public Accountant (CPA)
+Years at Current Job: 12
+
+=== CONTACT INFORMATION ===
+Home Address: 789 Pine Road, Denver, CO 80201
+Home Phone: (555) 234-5678
+Cell Phone: (555) 234-5679
 Email: r.williams@email.com
-Address: 789 Pine Road, Denver, CO 80201
 
-Emergency Contact Name: Maria Williams
-Emergency Contact Relation: Spouse
-Emergency Contact Phone: (555) 234-9999
+Emergency Contact: Maria Elena Williams (Spouse)
+Emergency Phone: (555) 234-9999
 
 === INSURANCE INFORMATION ===
-Insurance Provider: BlueCross BlueShield
+Primary Insurance: BlueCross BlueShield of Colorado
 Policy Number: BCB-2024-78901
 Group Number: GRP-445566
-Policyholder: Robert Williams
-Policyholder Relation: Self
-
-Secondary Insurance: None
-
-=== MEDICAL HISTORY ===
-Primary Complaint: Persistent lower back pain for 3 weeks
-Pain Level (1-10): 6
-
-Current Medications:
-- Lisinopril 10mg (blood pressure) - daily
-- Atorvastatin 20mg (cholesterol) - daily
-- Ibuprofen 400mg (pain) - as needed
-
-Allergies:
-- Penicillin (rash)
-- Sulfa drugs (hives)
-
-Previous Surgeries:
-- Appendectomy (2005)
-- Knee arthroscopy, right (2018)
-
-Chronic Conditions:
-[x] High blood pressure
-[x] High cholesterol
-[ ] Diabetes
-[ ] Asthma
-[ ] Heart disease
-[ ] Cancer
-[ ] Arthritis
-
-Family History:
-- Father: Type 2 Diabetes, Heart Disease
-- Mother: Breast Cancer (survivor)
-- Siblings: None significant
-
-=== LIFESTYLE ===
-Smoking Status: Never
-Alcohol Use: Social (2-3 drinks per week)
-Exercise Frequency: 3 times per week
-Diet: Generally balanced
+Copay (Primary Care): $25.00
+Deductible: $1,500 individual / $3,000 family
 
 === REASON FOR VISIT ===
-Detailed Description: Patient reports persistent lower back pain that started
-approximately 3 weeks ago after lifting heavy boxes during a home move. Pain is
-described as dull and aching, worse in the morning and after prolonged sitting.
-Pain radiates slightly to the left hip. No numbness or tingling in legs.
-Over-the-counter ibuprofen provides temporary relief.
+Chief Complaint: Persistent lower back pain for 3 weeks
+Onset: 01/30/2024 after lifting heavy boxes during home move
+Pain Location: Lower back, left-sided, lumbar region (L4-L5)
+Pain Severity: 6/10 at rest, 8/10 with activity
+Associated Symptoms: Morning stiffness (30 min), muscle spasms (occasional)
+Absent Symptoms: No numbness, no tingling, no leg weakness
 
-=== CONSENT ===
-[x] I consent to treatment
-[x] I consent to sharing records with insurance
-[x] I acknowledge the privacy policy (HIPAA)
+=== CURRENT MEDICATIONS ===
+1. Lisinopril 10mg - Once daily (Hypertension)
+2. Atorvastatin 20mg - Once daily (High cholesterol)
+3. Ibuprofen 400mg - Every 6 hours as needed (Back pain)
+4. Vitamin D3 2000 IU - Once daily (Supplement)
+5. Fish Oil 1000mg - Once daily (Cardiovascular health)
 
-Patient Signature: Robert Williams
+=== ALLERGIES ===
+1. Penicillin - Generalized rash (Moderate severity)
+2. Sulfa drugs - Urticaria/hives (Moderate-Severe)
+3. Latex - Contact dermatitis (Mild)
+
+=== PAST MEDICAL HISTORY ===
+Chronic Conditions:
+[x] Hypertension (diagnosed 2018, well-controlled)
+[x] Hyperlipidemia (diagnosed 2019, controlled on statin)
+[x] GERD (mild, managed with diet)
+[x] Anxiety (mild, situational)
+
+Previous Surgeries:
+- Appendectomy (2005) - No complications
+- Right knee arthroscopy (2018) - Meniscus repair, full recovery
+
+=== FAMILY MEDICAL HISTORY ===
+Father: Type 2 Diabetes, Coronary Artery Disease
+Mother: Breast Cancer (Stage 1, in remission), Osteoporosis
+Siblings: Brother (healthy), Sister (asthma, anxiety)
+
+=== SOCIAL HISTORY ===
+Tobacco: Never smoker
+Alcohol: Social drinker (2-3 drinks/week)
+Exercise: 3-4 times per week (currently limited by pain)
+Diet: Generally balanced, Mediterranean-style
+Sleep: 6-7 hours/night (disrupted by pain)
+Stress Level: Moderate-High (tax season)
+
+=== VITAL SIGNS ===
+Blood Pressure: 138/86 mmHg
+Heart Rate: 76 bpm
+Temperature: 98.4°F
+Height: 5'11"
+Weight: 198 lbs
+BMI: 27.6 (overweight)
+Pain Level: 6/10
+
+=== PATIENT GOALS ===
+1. Evaluate and treat lower back pain
+2. Establish care with new primary care provider
+3. Refill maintenance medications
+4. Discuss imaging needs
+5. Get referral for physical therapy
+
+=== DECLARATIONS ===
+[x] I consent to examination and treatment
+[x] I consent to sharing medical records with insurance
+[x] I acknowledge receipt of Notice of Privacy Practices (HIPAA)
+
+Patient Signature: Robert James Williams
 Date: 02/20/2024
+
+================================================================================
+PATIENT 2 OF 3
+================================================================================
+
+PATIENT INTAKE AND MEDICAL HISTORY FORM
+Date of Visit: 02/20/2024
+Visit Type: New Patient - Comprehensive Evaluation
+Appointment Time: 11:15 AM
+
+=== PATIENT DEMOGRAPHICS ===
+Patient Name: Sarah Michelle Chen
+Preferred Name: Sarah
+Date of Birth: 05/14/1992
+Age: 31
+Gender: Female
+Marital Status: Single
+Race: Asian
+Ethnicity: Chinese-American
+Primary Language: English
+
+Social Security Number: XXX-XX-8901
+Driver's License: CO-XXXXXXX901
+Employer: TechCorp Industries
+Occupation: Software Engineer
+Years at Current Job: 4
+
+=== CONTACT INFORMATION ===
+Home Address: 2400 Cherry Lane, Apt 8, Denver, CO 80202
+Home Phone: (555) 345-6789
+Cell Phone: (555) 345-6790
+Email: s.chen@email.com
+
+Emergency Contact: David Chen (Father)
+Emergency Phone: (555) 345-6791
+
+=== INSURANCE INFORMATION ===
+Primary Insurance: Aetna Health Plan
+Policy Number: AET-2024-45678
+Group Number: GRP-778899
+Copay (Primary Care): $30.00
+Deductible: $2,000 individual
+
+=== REASON FOR VISIT ===
+Chief Complaint: Persistent headaches and migraines for 2 months
+Onset: December 2023, frequency increasing
+Headache Type: Tension-type (70%), Migraine (30%)
+Frequency: 3-4 times per week
+Pain Severity: 5/10 average, 8/10 during migraines
+Associated Symptoms: Nausea (with migraines), light sensitivity, neck tension
+Triggers: Stress, lack of sleep, caffeine withdrawal
+Previous Treatment: Over-the-counter ibuprofen (minimal relief)
+
+=== CURRENT MEDICATIONS ===
+1. Oral Contraceptive (Yaz) - Once daily (Birth control)
+2. Ibuprofen 400mg - As needed (Headache)
+3. Vitamin B2 (Riboflavin) 400mg - Once daily (Migraine prevention)
+4. Magnesium Glycinate 300mg - Once daily (Supplement)
+
+=== ALLERGIES ===
+1. Sulfonamides - Rash (Mild-Moderate)
+2. Codeine - Nausea/dizziness (Moderate)
+
+=== PAST MEDICAL HISTORY ===
+Chronic Conditions:
+[x] Migraines (diagnosed age 18)
+[x] Anxiety (mild, managed without medication)
+
+Previous Surgeries: None
+
+Hospitalizations: None
+
+=== FAMILY MEDICAL HISTORY ===
+Father: Hypertension, High cholesterol
+Mother: Migraines, Thyroid disease
+Siblings: Brother (healthy), Sister (migraines)
+
+=== SOCIAL HISTORY ===
+Tobacco: Never smoker
+Alcohol: Occasional (1-2 drinks/month)
+Exercise: 4-5 times per week (yoga, running)
+Diet: Vegetarian, balanced nutrition
+Sleep: 6-7 hours/night (often disrupted)
+Stress Level: High (demanding job, perfectionist)
+Caffeine: 2-3 cups coffee daily
+
+=== VITAL SIGNS ===
+Blood Pressure: 118/76 mmHg
+Heart Rate: 72 bpm
+Temperature: 98.6°F
+Height: 5'6"
+Weight: 125 lbs
+BMI: 20.2 (normal)
+Pain Level: 5/10
+
+=== PATIENT GOALS ===
+1. Find effective migraine treatment
+2. Identify and manage triggers
+3. Reduce frequency of headaches
+4. Explore preventive options
+
+=== DECLARATIONS ===
+[x] I consent to examination and treatment
+[x] I consent to sharing medical records with insurance
+[x] I acknowledge receipt of Notice of Privacy Practices (HIPAA)
+
+Patient Signature: Sarah Michelle Chen
+Date: 02/20/2024
+
+================================================================================
+PATIENT 3 OF 3
+================================================================================
+
+PATIENT INTAKE AND MEDICAL HISTORY FORM
+Date of Visit: 02/20/2024
+Visit Type: New Patient - Comprehensive Evaluation
+Appointment Time: 2:00 PM
+
+=== PATIENT DEMOGRAPHICS ===
+Patient Name: James Edward Martinez
+Preferred Name: Jim
+Date of Birth: 08/25/1968
+Age: 55
+Gender: Male
+Marital Status: Married
+Race: Hispanic
+Ethnicity: Mexican-American
+Primary Language: English
+
+Social Security Number: XXX-XX-9012
+Driver's License: CO-XXXXXXX902
+Employer: Denver Public Schools
+Occupation: High School Principal
+Years at Current Job: 8
+
+=== CONTACT INFORMATION ===
+Home Address: 5600 Mountain View Drive, Denver, CO 80203
+Home Phone: (555) 456-7890
+Cell Phone: (555) 456-7891
+Email: j.martinez@email.com
+
+Emergency Contact: Rosa Martinez (Spouse)
+Emergency Phone: (555) 456-7892
+
+=== INSURANCE INFORMATION ===
+Primary Insurance: United Healthcare
+Policy Number: UHC-2024-56789
+Group Number: GRP-334455
+Copay (Primary Care): $35.00
+Deductible: $1,000 individual / $2,000 family
+
+=== REASON FOR VISIT ===
+Chief Complaint: Shortness of breath and chest discomfort for 1 week
+Onset: 02/13/2024, progressive
+Chest Discomfort: Mild pressure, left-sided, worse with exertion
+Shortness of Breath: Mild dyspnea on exertion (climbing stairs)
+Associated Symptoms: Fatigue, occasional palpitations
+Triggers: Physical activity, stress
+Previous Treatment: Rest (temporary relief)
+Risk Factors: Family history of heart disease, sedentary lifestyle, stress
+
+=== CURRENT MEDICATIONS ===
+1. Metoprolol 50mg - Once daily (Hypertension)
+2. Lisinopril 20mg - Once daily (Hypertension)
+3. Atorvastatin 40mg - Once daily (High cholesterol)
+4. Aspirin 81mg - Once daily (Cardiovascular protection)
+5. Metformin 1000mg - Twice daily (Type 2 Diabetes)
+
+=== ALLERGIES ===
+1. NSAIDs (except aspirin) - GI upset (Mild-Moderate)
+2. ACE Inhibitor cough - Persistent dry cough (Mild)
+
+=== PAST MEDICAL HISTORY ===
+Chronic Conditions:
+[x] Hypertension (diagnosed 2005, controlled on medication)
+[x] Type 2 Diabetes (diagnosed 2010, controlled on medication)
+[x] Hyperlipidemia (diagnosed 2008, controlled on statin)
+[x] Obesity (BMI 31.2)
+
+Previous Surgeries:
+- Hernia repair (1995) - No complications
+- Prostate biopsy (2015) - Benign
+
+Hospitalizations:
+- Pneumonia (2008) - 2 day admission, full recovery
+
+=== FAMILY MEDICAL HISTORY ===
+Father: Myocardial infarction (age 62), Hypertension
+Mother: Diabetes, Hypertension
+Siblings: Brother (heart disease, age 58), Sister (healthy)
+
+=== SOCIAL HISTORY ===
+Tobacco: Former smoker (quit 2010, 20 pack-years)
+Alcohol: Moderate (3-4 drinks/week)
+Exercise: Sedentary (minimal activity)
+Diet: High sodium, high fat, limited vegetables
+Sleep: 5-6 hours/night (poor quality)
+Stress Level: Very High (demanding job, family responsibilities)
+Work Hours: 50-60 hours/week
+
+=== VITAL SIGNS ===
+Blood Pressure: 148/92 mmHg (elevated)
+Heart Rate: 88 bpm
+Temperature: 98.5°F
+Height: 5'10"
+Weight: 215 lbs
+BMI: 31.2 (obese)
+Pain Level: 4/10
+
+=== RECENT LAB RESULTS (from 01/2024) ===
+Glucose (fasting): 145 mg/dL (elevated)
+Total Cholesterol: 215 mg/dL (borderline high)
+LDL: 135 mg/dL (high)
+HDL: 38 mg/dL (low)
+Triglycerides: 185 mg/dL (high)
+HbA1c: 7.2% (above target)
+
+=== PATIENT GOALS ===
+1. Evaluate chest discomfort and shortness of breath
+2. Assess cardiovascular risk
+3. Improve diabetes control
+4. Reduce stress and improve lifestyle
+5. Prevent future cardiac events
+
+=== DECLARATIONS ===
+[x] I consent to examination and treatment
+[x] I consent to sharing medical records with insurance
+[x] I acknowledge receipt of Notice of Privacy Practices (HIPAA)
+
+Patient Signature: James Edward Martinez
+Date: 02/20/2024
+
+================================================================================
+END OF BATCH - 3 PATIENTS TOTAL
+================================================================================

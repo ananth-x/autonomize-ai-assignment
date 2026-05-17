@@ -57,13 +57,11 @@ def main():
             for uploaded_file in uploaded_files:
                 if uploaded_file.name not in agent.loaded_forms:
                     with st.spinner(f"Processing {uploaded_file.name}..."):
-                        # Save to temp file
-                        with tempfile.NamedTemporaryFile(
-                            delete=False,
-                            suffix=Path(uploaded_file.name).suffix,
-                        ) as tmp:
-                            tmp.write(uploaded_file.getvalue())
-                            tmp_path = tmp.name
+                        # Save to temp file preserving original name
+                        tmp_dir = tempfile.mkdtemp()
+                        tmp_path = os.path.join(tmp_dir, uploaded_file.name)
+                        with open(tmp_path, "wb") as f:
+                            f.write(uploaded_file.getvalue())
 
                         try:
                             result = agent.load_form(tmp_path)
@@ -72,6 +70,7 @@ def main():
                             st.error(f"Error loading {uploaded_file.name}: {e}")
                         finally:
                             os.unlink(tmp_path)
+                            os.rmdir(tmp_dir)
 
         # Show loaded forms
         st.divider()

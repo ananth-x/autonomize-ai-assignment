@@ -1,0 +1,57 @@
+FORM 1040 - U.S. Individual Income Tax Return (Sample)
+Tax Year: 2023
+
+=== PERSONAL INFORMATION ===
+First Name: John
+Middle Initial: A
+Last Name: Smith
+Social Security Number: XXX-XX-1234
+Date of Birth: 03/15/1985
+Filing Status: Married Filing Jointly
+
+Spouse First Name: Jane
+Spouse Last Name: Smith
+Spouse SSN: XXX-XX-5678
+
+Home Address: 123 Oak Street
+City: Springfield
+State: IL
+ZIP Code: 62701
+
+=== INCOME ===
+Wages, salaries, tips (W-2): $85,000.00
+Interest income: $1,250.00
+Dividend income: $3,400.00
+Business income (Schedule C): $12,000.00
+Capital gains: $5,200.00
+Total Income: $106,850.00
+
+=== ADJUSTMENTS ===
+IRA deduction: $6,500.00
+Student loan interest: $2,500.00
+Health savings account: $3,850.00
+Total Adjustments: $12,850.00
+
+Adjusted Gross Income (AGI): $94,000.00
+
+=== DEDUCTIONS ===
+Standard Deduction: $27,700.00
+[x] Standard deduction selected
+[ ] Itemized deductions selected
+
+Taxable Income: $66,300.00
+
+=== TAX COMPUTATION ===
+Tax: $7,456.00
+Child tax credit: $4,000.00 (2 qualifying children)
+Education credits: $2,000.00
+Total Credits: $6,000.00
+
+Tax After Credits: $1,456.00
+Federal Income Tax Withheld: $9,500.00
+
+REFUND AMOUNT: $8,044.00
+
+Signature: John A. Smith
+Date Signed: 04/10/2024
+Preparer: Self-prepared

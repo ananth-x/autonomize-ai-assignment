@@ -1,0 +1,66 @@
+EMPLOYMENT APPLICATION FORM
+Company: TechCorp Industries
+Position Applied For: Senior Software Engineer
+Date of Application: 01/15/2024
+
+=== APPLICANT INFORMATION ===
+Full Name: Sarah Johnson
+Email: sarah.johnson@email.com
+Phone: (555) 123-4567
+Address: 456 Maple Avenue, Austin, TX 78701
+Date of Birth: 07/22/1990
+
+=== EDUCATION ===
+Highest Degree: Master of Science
+Field of Study: Computer Science
+University: Stanford University
+Graduation Year: 2014
+GPA: 3.85
+
+Additional Certifications:
+- AWS Solutions Architect Professional
+- Google Cloud Professional Data Engineer
+- Certified Kubernetes Administrator
+
+=== WORK EXPERIENCE ===
+Current Employer: DataFlow Inc.
+Current Position: Software Engineer II
+Years at Current Job: 3
+Current Salary: $145,000
+
+Previous Employer: StartupXYZ
+Previous Position: Junior Developer
+Years at Previous Job: 2
+
+Total Years of Experience: 8
+
+=== SKILLS ===
+Programming Languages: Python, Java, Go, TypeScript
+Frameworks: React, Django, Spring Boot
+Cloud Platforms: AWS, GCP
+Databases: PostgreSQL, MongoDB, Redis
+Other: Docker, Kubernetes, CI/CD, Microservices
+
+=== REFERENCES ===
+Reference 1 Name: Dr. Michael Chen
+Reference 1 Relation: Former Manager at DataFlow Inc.
+Reference 1 Phone: (555) 987-6543
+
+Reference 2 Name: Prof. Lisa Wang
+Reference 2 Relation: Academic Advisor at Stanford
+Reference 2 Phone: (555) 456-7890
+
+=== AVAILABILITY ===
+Earliest Start Date: 03/01/2024
+Willing to Relocate: Yes
+Desired Salary: $175,000
+Work Authorization: US Citizen
+
+=== DECLARATIONS ===
+[x] I certify that all information is true and complete
+[x] I authorize background check
+[x] I agree to drug testing if required
+[ ] I have a non-compete agreement with current employer
+
+Signature: Sarah Johnson
+Date: 01/15/2024

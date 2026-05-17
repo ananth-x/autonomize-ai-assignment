@@ -1,0 +1,80 @@
+PATIENT INTAKE FORM
+Clinic: Riverside Family Medicine
+Date: 02/20/2024
+
+=== PATIENT INFORMATION ===
+Patient Name: Robert Williams
+Date of Birth: 11/08/1978
+Age: 45
+Gender: Male
+Marital Status: Married
+Occupation: Accountant
+
+Contact Phone: (555) 234-5678
+Email: r.williams@email.com
+Address: 789 Pine Road, Denver, CO 80201
+
+Emergency Contact Name: Maria Williams
+Emergency Contact Relation: Spouse
+Emergency Contact Phone: (555) 234-9999
+
+=== INSURANCE INFORMATION ===
+Insurance Provider: BlueCross BlueShield
+Policy Number: BCB-2024-78901
+Group Number: GRP-445566
+Policyholder: Robert Williams
+Policyholder Relation: Self
+
+Secondary Insurance: None
+
+=== MEDICAL HISTORY ===
+Primary Complaint: Persistent lower back pain for 3 weeks
+Pain Level (1-10): 6
+
+Current Medications:
+- Lisinopril 10mg (blood pressure) - daily
+- Atorvastatin 20mg (cholesterol) - daily
+- Ibuprofen 400mg (pain) - as needed
+
+Allergies:
+- Penicillin (rash)
+- Sulfa drugs (hives)
+
+Previous Surgeries:
+- Appendectomy (2005)
+- Knee arthroscopy, right (2018)
+
+Chronic Conditions:
+[x] High blood pressure
+[x] High cholesterol
+[ ] Diabetes
+[ ] Asthma
+[ ] Heart disease
+[ ] Cancer
+[ ] Arthritis
+
+Family History:
+- Father: Type 2 Diabetes, Heart Disease
+- Mother: Breast Cancer (survivor)
+- Siblings: None significant
+
+=== LIFESTYLE ===
+Smoking Status: Never
+Alcohol Use: Social (2-3 drinks per week)
+Exercise Frequency: 3 times per week
+Diet: Generally balanced
+
+=== REASON FOR VISIT ===
+Detailed Description: Patient reports persistent lower back pain that started
+approximately 3 weeks ago after lifting heavy boxes during a home move. Pain is
+described as dull and aching, worse in the morning and after prolonged sitting.
+Pain radiates slightly to the left hip. No numbness or tingling in legs.
+Over-the-counter ibuprofen provides temporary relief.
+
+=== CONSENT ===
+[x] I consent to treatment
+[x] I consent to sharing records with insurance
+[x] I acknowledge the privacy policy (HIPAA)
+
+Patient Signature: Robert Williams
+Date: 02/20/2024

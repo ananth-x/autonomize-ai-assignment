@@ -20,10 +20,12 @@ from .extractors import FormExtractor, StructuredFieldExtractor
 from .vectorstore import FormVectorStore
 
 
-# Token budget for context portion only.
-# 6K TPM total - ~100 tokens (prompts) - 800 tokens (response) = ~5100 tokens for context
-# At ~1.3 tokens per word, ~4 chars per token: ~3500 chars is safe
-MAX_CONTEXT_CHARS = 3500
+# Token budget for context.
+# TPM = tokens per minute (rate limit), NOT per request.
+# The model context window is 128K, so individual requests can be larger.
+# We keep context moderate to get faster responses and avoid rate limits
+# if multiple requests happen within a minute.
+MAX_CONTEXT_CHARS = 5000
 
 
 class FormAgent:
@@ -36,7 +38,6 @@ class FormAgent:
             temperature=Config.TEMPERATURE,
             api_key=Config.GROQ_API_KEY,
             base_url=Config.GROQ_BASE_URL,
-            max_tokens=800,
         )
         self._extractor = FormExtractor()
         self._field_extractor = StructuredFieldExtractor()

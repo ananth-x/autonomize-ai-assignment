@@ -113,7 +113,11 @@ class FormAgent:
         return response.content
 
     def summarize(self, form_name: Optional[str] = None) -> str:
-        """Generate a summary of a form or all loaded forms."""
+        """Generate a summary of a form or all loaded forms.
+
+        Uses retrieval to get the most informative chunks from the form,
+        then asks the LLM to summarize.
+        """
         if form_name and form_name in self._loaded_forms:
             forms_to_summarize = {form_name: self._loaded_forms[form_name]}
         elif form_name:
@@ -124,25 +128,37 @@ class FormAgent:
         if not forms_to_summarize:
             return "No forms loaded. Use 'load' first."
 
-        # Use fields as compact representation + first part of text
-        budget_per_form = MAX_CONTEXT_CHARS // len(forms_to_summarize)
+        # Use retrieval with a broad summary-oriented query per form
         context_parts = []
+        budget_per_form = MAX_CONTEXT_CHARS // len(forms_to_summarize)
 
         for name, data in forms_to_summarize.items():
-            # Fields are the most token-efficient representation
-            if data["fields"]:
-                fields_lines = [f"  {k}: {v}" for k, v in list(data["fields"].items())[:25]]
-                part = f"[{name}]\n" + "\n".join(fields_lines)
+            # Retrieve chunks that cover key info
+            summary_query = (
+                "names, dates, amounts, purpose, key details, "
+                "personal information, important values"
+            )
+            docs = self._vectorstore.search(
+                query=summary_query,
+                k=4,
+                filter_metadata={"filename": name},
+            )
+            if docs:
+                form_context = self._build_context(docs, budget_per_form)
             else:
-                part = f"[{name}]\n{data['text'][:budget_per_form]}"
-            context_parts.append(part[:budget_per_form])
+                # Fallback to raw text beginning
+                form_context = data["text"][:budget_per_form]
 
-        context = "\n\n".join(context_parts)[:MAX_CONTEXT_CHARS]
+            context_parts.append(f"[{name}]\n{form_context}")
+
+        context = "\n\n---\n\n".join(context_parts)[:MAX_CONTEXT_CHARS]
 
         prompt = ChatPromptTemplate.from_messages([
             ("system",
-             "Summarize the form data: type, key people, important values, dates."),
-            ("human", "{context}\n\nProvide a structured summary."),
+             "Summarize the form document(s). Include: form type/purpose, "
+             "all people mentioned, key values (dates, amounts, addresses), "
+             "and notable details. Be thorough."),
+            ("human", "{context}\n\nProvide a detailed summary."),
         ])
 
         chain = prompt | self._llm
